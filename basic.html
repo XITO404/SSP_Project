@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+	<link rel="stylesheet" href="./login.css" />
 </head>
 <body>
     <div className="Login">
-        <h1>SSP</h1>
-            <form method="post">
-                ID<br></br>
-            <input type="text"/><br></br>
-            PW<br></br>
-            <input type="password"/><br></br><br></br>
-            <input type="submit" value={"로그인"}/>
-            </form>
+ <form method="post" name="form">
+		<div class="main-container">
+		  <header class="logo">
+			<div>
+				<img class="logoPicture" src="logo_2.jpg" alt="스터디플래너_로그" width=280px, height=100px/>
+			</div>
+		  </header>
+		  <content class="login-container">
+			<input type="text" placeholder = "아이디" name = "id"><br>
+			<input type="password" placeholder = "비밀번호" name = "pw">
+		 	<input type="submit" value="로그인" class="loginBtn" style="font-weight : bold ; color: white;">
+		  </content>
+		  <footer>Don't you have ID?  <a href='./signup.html'>sign up</a></footer>
+		</div>
+		<script src="js/login.js"></script>
+	  </form>
     </div>
 </body>
 </html>
