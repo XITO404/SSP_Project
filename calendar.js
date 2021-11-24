@@ -56,11 +56,13 @@ const renderCalendar = () => {
 renderCalendar();
 
 const prevMonth = () => {
+  date.setDate(1);
   date.setMonth(date.getMonth() - 1);
   renderCalendar();
 }
 
 const nextMonth = () => {
+  date.setDate(1);
   date.setMonth(date.getMonth() + 1);
   renderCalendar();
 }
