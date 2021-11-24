@@ -46,7 +46,7 @@ const renderCalendar = () => {
                       ? 'this'
                       : 'other';
 
-    dates[i] = `<div class="date"><span class="${condition}"><a href="">${date}</a></span></div>`;
+    dates[i] = `<div class="date"><span class="${condition}">${date}</span></div>`;
   })
 
   // Dates 그리기
