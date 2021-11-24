@@ -4,27 +4,35 @@
         <title>Site</title>
         <meta charset="utf-8">
         <style>
+            *{
+                font-family: 'GongGothicMedium';
+            }
             header{
                 position:fixed;
                 top: 0;
                 width: 100%;
                 text-align: center;
 
-                height: 50px;
-                padding: 1rem;
+                height: 105px;
                 background: #fffefc;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+
+                padding-top: 0;
             }
 
             #fix_layer{
                 width: 100%;
-                height: 50px;
+                height: 30px;
                 border-bottom: black;
             }
-            #logo{
-                float: left;
+            #logo img{
+                position: absolute;
+                left:0;
+                top: 5px;
+                width: 128px;
+                height: 100px;
             }
             a{
                 text-decoration: none;
@@ -58,6 +66,14 @@
             @media(max-width:800px){
 
             }
+
+            @font-face {
+                font-family: 'GongGothicMedium';
+                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+            }
+
         </style>
 		<script>
 
@@ -69,13 +85,13 @@
         <header>
             <div id="fix_layer">
                 <div id="logo">
-                    <img src="logo.jpg"></img>
+                    <img src="ssp_logo.JPG"></img>
                 </div>
                  <div id="login" style="float:right;" >
                     <a href='./basic.html'>Login</a>
-                     &nbsp;&nbsp;&nbsp;&nbsp;
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href='./signup.html'>Sign Up</a>
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                  </div>
             </div>
         </header>
@@ -86,7 +102,7 @@
                 <!-- Banner -->
                 <section id="banner">
                     <div>
-                        <br><br><br><br>
+                        <br><br><br><br><br><br>
                     <div id="title">Share Study Planner</div>
                         <img src="mp.jpg" alt="My Image">
                         <h2>기록 공유 정리를 한 번에</h2>
