@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Calendar</title>
         <link rel="stylesheet" href="../static/css/calendar.css">
+        <link rel="stylesheet" href="../static/css/reaction.css">
     </head>
     <body>
         <div class="calendar">
@@ -88,6 +89,38 @@
                             </div>
                         </div>
 
+                        <!-- emoji -->
+                        <div id="emoji">
+                              <span id="emoji_1">
+                                <input type='button' onclick='count_1("plus")' value='😀'/>
+                              </span>
+                              <span id='result_1'>0</span>
+
+                              <span id="emoji_2">
+                                <input type='button' onclick='count_2("plus")' value='😉'/>
+                              </span>
+                              <span id='result_2'>0</span>
+
+                              <span id="emoji_3">
+                                <input type='button' onclick='count_3("plus")' value='🥰'/>
+                              </span>
+                              <span id='result_3'>0</span>
+
+                              <span id="emoji_4">
+                                <input type='button' onclick='count_4("plus")' value='🙂'/>
+                              </span>
+                              <span id='result_4'>0</span>
+
+                              <span id="emoji_5">
+                                <input type='button' onclick='count_5("plus")' value='🤭'/>
+                              </span>
+                              <span id='result_5'>0</span>
+
+                              <span id="emoji_6">
+                                <input type='button' onclick='count_6("plus")' value='🤣'/>
+                              </span>
+                              <span id='result_6'>0</span>
+                        </div>
                     </div>
 
                 </div>
@@ -99,5 +132,6 @@
         <script src="../static/js/todo.js"></script>
         <script src="../static/js/calendar.js"></script>
         <script src="../static/js/newpage.js"></script>
+        <script src="../static/js/reaction.js"></script>
     </body>
 </html>
