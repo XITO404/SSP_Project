@@ -3,7 +3,7 @@
     <head>
         <title>Site</title>
         <meta charset="utf-8">
-		<link rel="stylesheet" href="signup.css" />
+		<link rel="stylesheet" href="../static/css/signup.css" />
 		<script>
 			//비밀번호 확인 일치 검사
 			function Same_check() {
@@ -34,10 +34,11 @@
 		<form method ="post">
 			<div>
 				<ul>
-					<li><span >이름 </span><br><input type = "text" placeholder = "아이디를 입력하세요" class = 'box' name="name" id='name'/></li>
+					<li><span >이름 </span><br><input type = "text" placeholder = "이름을 입력하세요" class = 'box' name="name" id='name'/></li>
+					<li><span >닉네임 </span><br><input type = "text" placeholder = "닉네임을 입력하세요" class = 'box' name="nickname" id='nickname'/></li>
 					<li><span >이메일</span><br><input type = "text" placeholder = "이메일을 입력하세요." class = 'box' name="email" id='mail'/></li>
-					<li><span >아이디</span><br><input type = "text" class ='box' name="id" id="id" placeholder="이메일을 입력하세요." /><br></li>
-					<li><span >비밀번호</span><br><input type = "password" placeholder = "비밀번호를 입력하세요" class = 'box' name="pw" id='pw' onchange="Same_check()"/>
+					<li><span >아이디</span><br><input type = "text" class ='box' name="id" id="id" placeholder="아이디를 입력하세요." /><br></li>
+					<li><span >비밀번호</span><br><input type = "password" placeholder = "비밀번호를 입력하세요" class = 'box' name="password" id='password' onchange="Same_check()"/>
 						<br></li>
 					<li><span >비밀번호 확인 </span><br><input type = "password" placeholder = "다시 비밀번호를 입력하세요" class = 'box' name="pw1" id='pw1' onchange="Same_check()"/>
 						<br><span class = 'necessary' >필수 정보입니다.</span></li>
