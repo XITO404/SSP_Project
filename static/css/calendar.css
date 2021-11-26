@@ -1,14 +1,16 @@
 /* calendar 전체 */
 .calendar {
-    width: 700px;
-    height: 700px;
+    width: 550px;
+    height: 450px;
     margin: 0;
     padding-bottom: 0;
+    position: center;
 }
 
 /* calendar_header 년/월 표시, 날짜 이동 */
 .calendar_header {
     display: inline-block;
+    position: center;
 }
 
 .calendar_nav {
@@ -17,14 +19,14 @@
     flex-shrink: 0;
     justify-content: center;
     align-items: center;
-    font-size: 50px;
+    font-size: 25px;
 }
 
 .nav-btn {
     width: 28px;
     height: 30px;
     border: none;
-    font-size: 50px;
+    font-size: 28px;
     line-height: 34px;
     margin: 0 20px;
     background-color: transparent;
@@ -51,11 +53,10 @@
 .dates {
     display: flex;
     flex-flow: row wrap;
-    border: 1px solid #33333341;
 }
 
 .date {
-    width: calc(100% / 7);
+    width: calc(100% / 8.4);
     padding: 5% 1%;
     /* text-align: left; */
     text-align: center;
@@ -66,6 +67,7 @@
 .date-itm{
     display: inline-block;
     vertical-align: middle;
+    font-size:25px;
 }
 
 .date_event{
@@ -78,8 +80,8 @@
     font-size: 15px;
 }
 
-.day:nth-child(7n + 1),
-.date:nth-child(7n + 1) {
+.day:nth-child(7n+1),
+.date:nth-child(7n+1) {
     color: #D13E3E;
 }
 
@@ -97,13 +99,9 @@
     background-color: #ff1c1c96;
     color: #ffffff !important;
 }
-
-.selected{
-    background-color: black;
-    color: #ffffff !important;
-}
-
-
+ .day{
+     font-size:25px;
+ }
 
 
 /* NEW TAB */
@@ -145,3 +143,15 @@
     float: right;
 }
 
+fieldset{
+    position: center;
+}
+
+legend{
+    font-size: 15px;
+}
+
+#count{
+    font-size: 15px;
+    position: relative;
+}

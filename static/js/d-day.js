@@ -8,5 +8,5 @@ setInterval(function() {
   //var min = Math.ceil((gap % (1000 * 60 * 60)) / (1000 * 60));
   //var sec = Math.ceil((gap % (1000 * 60)) / 1000);
 
-  document.getElementById("count").innerHTML = "D-DAY - " + day;
+  document.getElementById("count").innerHTML = "New Year - " + day;
 }, 1000);

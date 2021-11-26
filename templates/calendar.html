@@ -5,6 +5,7 @@
         <title>Calendar</title>
         <link rel="stylesheet" href="../static/css/calendar.css">
         <link rel="stylesheet" href="../static/css/reaction.css">
+        <link rel="stylesheet" href="../static/css/group.css">
     </head>
     <body>
         <div class="calendar">
@@ -42,6 +43,20 @@
                 <script src="d-day.js"></script>
             </fieldset>
 
+            <!-- group -->
+            <div id="Group">
+                <div class="Friend_button">
+                    <button class="mandi" type="button" onclick="location.href=''"><img src=""></button>
+                    <button class="moon" type="button" onclick="location.href=''"><img src=""></button>
+                    <button class="manoi" type="button" onclick="location.href=''"><img src=""></button>
+                    <button class="mandi" type="button" onclick="location.href=''"><img src=""></button>
+                </div>
+                &nbsp;
+                <div class="Plus_button" style="border-color: #F2F2F2">
+                    <button class="plus_mark"onclick="location.href=''" style="font-size: 30px; color:#F2F2F2; ">+</button>
+                </div>
+            </div>
+
             <!-- 새로운 창 -->
             <div class="resv-wrapper">
                 <div class="resv-bg">
@@ -59,9 +74,9 @@
                         </div>
 
                         <!-- To Do LIst -->
-                        <div class="list-box">
+                        <div class="list-box" style="text-align: left; width: 300px; height: 500px; margin: 0;">
 
-                            <div style="text-align: left; width: 500px; margin: 0;">
+                            <div>
                                 <h4>To Do List</h4>
 
                                 <div class="write-box">
@@ -81,7 +96,7 @@
 
                         <!-- Image -->
                         <div class="Image">
-                            <div style="text-align: right;">
+                            <div style="text-align: right; positon: fixed; top:0; right:0;">
                                 <div class="Image_upload">
                                     <input type="file" id="real-input" class="image_inputType_file" accept="img/*" required multiple>
                                     <button class="browse-btn">사진업로드</botton>
