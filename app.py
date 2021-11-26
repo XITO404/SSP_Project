@@ -1,5 +1,5 @@
 # app.py는 서버를 돌리는 파일
-from flask import Flask, render_template,request,url_for
+from flask import Flask, render_template,request,session
 import pymysql
 
 app = Flask(__name__)
@@ -18,6 +18,14 @@ cursor = db.cursor()
 def mainpage():
     return render_template("mainpage.html")
 
+@app.route('/calender.html')
+def calender():
+    return render_template("./templates/calender.html")
+
+@app.route('/todo.html')
+def todo():
+    return render_template("todo.html")
+
 @app.route('/login.html')
 def login():
     if request.method == 'POST':
@@ -27,23 +35,14 @@ def login():
             if (id in Member):
 
                 session["logged_in"] = True
-                return render_template('loggedin.html')
+                return render_template('login.html')
             else:
                 return '비밀번호가 틀립니다.'
             return '아이디가 없습니다.'
         except:
             return 'Dont login'
     else:
-        return render_template('login.html')
-
-
-@app.route('/calender.html')
-def calender():
-    return render_template("calender.html")
-
-@app.route('/todo.html')
-def todo():
-    return render_template("todo.html")
+        return render_template('./templates/login.html')
 
 @app.route('/signup.html', methods=['GET', 'POST'])
 def signup():
@@ -54,7 +53,7 @@ def signup():
         id = request.form['id']
         pw = request.form['pw']
 
-        sql = "INSERT INTO Member (name,email,id,pw) VALUES (%s, %s, %s,%s);" % (name, email, id, pw)
+        sql = '''INSERT INTO Member (name,email,id,pw) VALUES (%s, %s, %s,%s);'''
 
         cursor.execute(sql, (name, email, id, pw))
         db.commit()
