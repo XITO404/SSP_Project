@@ -32,7 +32,9 @@
 
     <body>
 		<div>
-			<ul>
+
+			<form action="/register" method="post">
+					<ul>
 				<li><span >이름 </span><br><input type = "text" placeholder = "이메일을 입력하세요" class = 'box' name="email" id='email'/></li>
 				<li><span >아이디</span><br><input type = "text" class ='box' name="id" id="id" placeholder="아이디를 입력하세요." /><br></li>
 				<li><span >비밀번호</span><br><input type = "password" placeholder = "비밀번호를 입력하세요" class = 'box' name="pw" id='pw' onchange="Same_check()"/><br></li>
@@ -40,6 +42,8 @@
 					<br><span class = 'necessary' >필수 정보입니다.</span></li>
 				<li><input class='button'type="submit" value="가입하기"></li>
 			</ul>
+			</form>
+
 		</div>
     </body>
 </html>
