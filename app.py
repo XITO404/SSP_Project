@@ -1,5 +1,6 @@
 # app.py는 서버를 돌리는 파일
 from flask import Flask, render_template
+from neo4j import GraphDatabase
 
 app = Flask(__name__)
 

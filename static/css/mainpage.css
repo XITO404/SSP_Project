@@ -1,5 +1,5 @@
  *{
-                font-family: 'GongGothicMedium';
+     font-family: 'GongGothicMedium', sans-serif;
             }
             header{
                 position:fixed;
@@ -44,7 +44,7 @@
             }
 
             .info_main{
-                background-color: #F4FA58;
+                background-color: #90C0D8;
                 width: 100%;
 
             }
@@ -59,11 +59,4 @@
 
             @media(max-width:800px){
 
-            }
-
-            @font-face {
-                font-family: 'GongGothicMedium';
-                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
-                font-weight: normal;
-                font-style: normal;
             }
