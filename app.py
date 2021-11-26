@@ -1,6 +1,10 @@
 # app.py는 서버를 돌리는 파일
-from flask import Flask, render_template
-from neo4j import GraphDatabase
+from flask import Flask, render_template,request
+import pymysql
+
+# db 접속하는 코드
+db = pymysql.connect(host='localhost', port=3306, user='root', passwd='0000',db='ssp', charset='utf8')
+cursor = db.cursor()
 
 app = Flask(__name__)
 
