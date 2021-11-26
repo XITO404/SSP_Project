@@ -53,11 +53,10 @@
 .dates {
     display: flex;
     flex-flow: row wrap;
-    border: 1px solid #33333341;
 }
 
 .date {
-    width: calc(100% / 7);
+    width: calc(100% / 8.4);
     padding: 5% 1%;
     /* text-align: left; */
     text-align: center;
