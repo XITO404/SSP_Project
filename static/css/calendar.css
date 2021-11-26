@@ -4,13 +4,13 @@
     height: 450px;
     margin: 0;
     padding-bottom: 0;
-    position: fixed; top: 120px; left: 490px;
+    position: center;
 }
 
 /* calendar_header 년/월 표시, 날짜 이동 */
 .calendar_header {
     display: inline-block;
-    position: fixed; top: 100px; left: 630px;
+    position: center;
 }
 
 .calendar_nav {
@@ -145,7 +145,7 @@
 }
 
 fieldset{
-    position: fixed; top: 5px; right: 160px;
+    position: center;
 }
 
 legend{
