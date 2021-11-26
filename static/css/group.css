@@ -1,0 +1,23 @@
+#Group{
+    display: inline-flex;
+    position: fixed; top: 5px; left: 490px;
+    }
+
+    #Group button{
+      width : 64px;
+      height: 64px;
+      border-radius: 50%;
+      border-style: solid;
+      border-width: medium;
+      border-color: #F2F2F2;
+      background-color: #ffffff;
+      padding: 0;
+      padding-top: 1px;
+      margin: 10px;
+    }
+
+    .Friend_button img{
+      width : 56px;
+      height: 56px;
+      border-radius: 50%;
+    }
