@@ -1,16 +1,15 @@
 /* calendar 전체 */
 .calendar {
-    width: 550px;
-    height: 450px;
+    width:40%;
     margin: 0;
     padding-bottom: 0;
-    position: center;
+    position: fixed; top:140px; left: 450px;
 }
 
 /* calendar_header 년/월 표시, 날짜 이동 */
 .calendar_header {
     display: inline-block;
-    position: center;
+    position: fixed; top:110px; left: 623px;
 }
 
 .calendar_nav {
@@ -145,7 +144,7 @@
 }
 
 fieldset{
-    position: center;
+    position: fixed; top:5px; right: 300px;
 }
 
 legend{

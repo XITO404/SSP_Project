@@ -1,6 +1,6 @@
 #Group{
     display: inline-flex;
-    position: center;
+    position: fixed; top:5px; left: 440px;
     }
 
     #Group button{
@@ -18,6 +18,28 @@
 
     .Friend_button img{
       width : 56px;
+      height: 56px;
+      border-radius: 50%;
+    }
+    .profile{
+        position: fixed; top:5px; right: 40px;
+    }
+
+    .profile button{
+        width : 64px;
+      height: 64px;
+      border-radius: 50%;
+      border-style: solid;
+      border-width: medium;
+      border-color: #F2F2F2;
+      background-color: #ffffff;
+      padding: 0;
+      padding-top: 1px;
+      margin: 10px;
+    }
+
+    .profile img{
+        width : 56px;
       height: 56px;
       border-radius: 50%;
     }
