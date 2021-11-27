@@ -1,5 +1,5 @@
 # app.py는 서버를 돌리는 파일
-from flask import Flask, render_template,request,session
+from flask import Flask, render_template,request
 import pymysql
 
 app = Flask(__name__)
@@ -20,11 +20,13 @@ def mainpage():
 
 @app.route('/calender.html')
 def calender():
-    return render_template("./templates/calender.html")
+    return render_template("calender.html")
 
 @app.route('/todo.html')
 def todo():
     return render_template("todo.html")
+
+'''
 
 @app.route('/login.html')
 def login():
@@ -42,7 +44,9 @@ def login():
         except:
             return 'Dont login'
     else:
-        return render_template('./templates/login.html')
+        return render_template('login.html')
+
+
 
 @app.route('/signup.html', methods=['GET', 'POST'])
 def signup():
@@ -53,7 +57,7 @@ def signup():
         id = request.form['id']
         pw = request.form['pw']
 
-        sql = '''INSERT INTO Member (name,email,id,pw) VALUES (%s, %s, %s,%s);'''
+        sql = INSERT INTO Member (name,email,id,pw) VALUES (%s, %s, %s,%s);
 
         cursor.execute(sql, (name, email, id, pw))
         db.commit()
@@ -63,6 +67,6 @@ def signup():
 
     return render_template('login.html')
 
-
+'''
 if __name__ == '__main__':
     app.run(debug=True)
