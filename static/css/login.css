@@ -12,7 +12,7 @@ body {
 	flex-wrap: wrap;
 	width: 500px;
 	height: 530px;
-	margin: 150px auto;
+	margin: 80px auto;
 	background-color: #fff;
 	border: 1px solid #dbdbdb;
 }
@@ -26,9 +26,8 @@ body {
 
 .login-container input {
 	display: block;
-	width: 320px;
-	height: 36px;
-	padding: 8px;
+	width: 400px;
+	height: 40px;
 	color: rgba(var(--i1d, 38, 38, 38), 1);
 	font-family: -apple-;
 	border: 1px solid #dbdbdb;
@@ -52,7 +51,7 @@ h1 {
 input {
 	margin: 3px auto;
 	background-color: #fafafa;
-	font-size: 12px;
+	font-size: 15px;
 }
 
 footer {
