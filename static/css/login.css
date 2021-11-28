@@ -10,9 +10,9 @@ body {
 	flex-direction: column;
 	align-content: center;
 	flex-wrap: wrap;
-	width: 350px;
-	height: 380px;
-	margin: 200px auto;
+	width: 500px;
+	height: 530px;
+	margin: 150px auto;
 	background-color: #fff;
 	border: 1px solid #dbdbdb;
 }
@@ -26,7 +26,7 @@ body {
 
 .login-container input {
 	display: block;
-	width: 270px;
+	width: 320px;
 	height: 36px;
 	padding: 8px;
 	color: rgba(var(--i1d, 38, 38, 38), 1);
@@ -59,6 +59,6 @@ footer {
 	position: relative;
 	top: 65px;
 	color: rgba(var(--fe0, 0, 55, 107), 1);
-	font-size: 15px;
+	font-size: 17px;
 	text-align: center;
 }

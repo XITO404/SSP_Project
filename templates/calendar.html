@@ -6,35 +6,42 @@
         <link rel="stylesheet" href="../static/css/calendar.css">
         <link rel="stylesheet" href="../static/css/reaction.css">
         <link rel="stylesheet" href="../static/css/group.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,800&display=swap');
+        </style>
     </head>
     <body>
         <div class="calendar">
+            <div class="calendar_calendar">
 
-            <!-- calendar_header 년/월 표시, 날짜 이동 -->
-            <div class="calendar_header">
-                <div class="calendar_nav">
-                    <button class="nav-btn go-prev">&lt;</button>
-                    <span class="year"></span>년&nbsp
-                    <span class="month"></span>월
-                    <button class="nav-btn go-next">&gt;</button>
-                </div>
+                    <!-- calendar_header 년/월 표시, 날짜 이동 -->
+                    <div class="calendar_header">
+                        <div class="calendar_nav">
+                            <button class="nav-btn go-prev">&lt;</button>
+                            <span class="year"></span>년&nbsp;
+                            <span class="month"></span>월
+                            <button class="nav-btn go-next">&gt;</button>
+                        </div>
+                    </div>
+
+                    <!-- 7Days -->
+                    <div class="calendar_main">
+                        <div class="days">
+                            <div class="day">일</div>
+                            <div class="day">월</div>
+                            <div class="day">화</div>
+                            <div class="day">수</div>
+                            <div class="day">목</div>
+                            <div class="day">금</div>
+                            <div class="day">토</div>
+                        </div>
+                    </div>
+
+                    <!-- 날짜 별-->
+                    <div class="dates"></div>
             </div>
 
-            <!-- 7Days -->
-            <div class="calendar_main">
-                <div class="days">
-                    <div class="day">일</div>
-                    <div class="day">월</div>
-                    <div class="day">화</div>
-                    <div class="day">수</div>
-                    <div class="day">목</div>
-                    <div class="day">금</div>
-                    <div class="day">토</div>
-                </div>
 
-                <!-- 날짜 별-->
-                <div class="dates"></div>
-            </div>
 
             <!-- d-day -->
             <fieldset>
