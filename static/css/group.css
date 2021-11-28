@@ -44,6 +44,29 @@
       border-radius: 50%;
     }
 
+     .profile_f{
+        position: fixed; top:5px; left: 440px;
+    }
+
+    .profile_f button{
+        width : 64px;
+      height: 64px;
+      border-radius: 50%;
+      border-style: solid;
+      border-width: medium;
+      border-color: #F2F2F2;
+      background-color: #ffffff;
+      padding: 0;
+      padding-top: 1px;
+      margin: 10px;
+    }
+
+    .profile_f img{
+        width : 56px;
+      height: 56px;
+      border-radius: 50%;
+    }
+
     .profile_f{
         position: fixed; top:5px; left: 440px;
     }

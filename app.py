@@ -1,13 +1,14 @@
 # app.py는 서버를 돌리는 파일
-from flask import Flask, render_template,request,session
+from flask import Flask, session, render_template, redirect, request, url_for, flash, jsonify, json
+# from flaskext.mysql import MySQL
 
 import pymysql
 
 app = Flask(__name__)
-
+app.config["SECRET_KEY"] = "ABCD"
 # db 접속하는 코드
-#db = pymysql.connect(host='localhost', port=3306, user='root', passwd='0000',db='ssp', charset='utf8')
-#cursor = db.cursor()
+db = pymysql.connect(host='localhost', port=3306, user='root', passwd='0000',db='ssp', charset='utf8')
+cursor = db.cursor()
 
 
 # 템플릿 랜더링은 아래 구조로 사용
@@ -27,54 +28,135 @@ def calendar():
 def todo():
     return render_template("todo.html")
 
-@app.route('/login/')
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
-    return render_template("login.html")
+    if request.method=='POST':
+        id=request.form['id']
+        pw = request.form['pw']
+        # name=request.form['name']
+        sql = f"select * from Member where id='{id}' and pw='{pw}'"
 
-@app.route('/signup/')
+        # sql = f"select * from Member where id='{id}'"
+        cursor.execute(sql)
+
+
+
+
+        session['asd']=id
+
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+
+        if len(rows)==1:
+            flash("로그인 성공")
+            return redirect(url_for('main_page'))
+        else:
+            flash("로그인 실패")
+            return render_template("login.html")
+    elif request.method == 'GET':
+        return render_template("login.html")
+
+@app.route('/signup/' , methods=['GET', 'POST'])
 def signup():
-    return render_template("signup.html")
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        id = request.form['id']
+        pw = request.form['pw']
 
-#@app.route('/login.html')
+        sql = f"INSERT INTO Member(name,email,id,pw) VALUES ('{name}', '{email}', '{id}', '{pw}')"
+
+        cursor.execute(sql)
+        db.commit()
+
+        # return redirect(request.url)
+        return render_template('login.html')
+    elif request.method == 'GET':
+        return render_template("signup.html")
+
+@app.route('/register/', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        id = request.form['id']
+        pw = request.form['pw']
+
+        sql = f"INSERT INTO Member(name,email,id,pw) VALUES ('{name}', '{email}', '{id}', '{pw}')"
+
+        cursor.execute(sql)
+        db.commit()
+
+        return redirect(request.url)
+        return render_template('login.html')
+
+    return render_template('login.html')
+
+
+
+@app.route('/logout/',methods=['GET','POST'])
+def logout():
+    session.clear()
+    return redirect(url_for('main_page'))
+
+@app.route('/todoinsert/',methods=['GET','POST'])
+def todoinsert():
+    if request.method == 'POST':
+        content = request.form['content']
+        date = request.form['date']
+        id = session['asd']
+        sql = f"INSERT INTO todo VALUES('{id}','{content}',false, '{date}')"
+        cursor.execute(sql)
+        db.commit()
+        return redirect(request.url)
+    return redirect(url_for('main_page'))
+@app.route('/todoselect/',methods=['GET','POST'])
+def todoselect():
+    if request.method == 'POST':
+        id = session['asd']
+        date = request.form['date']
+
+        sql = f"SELECT * FROM todo WHERE userid = '{id}' and DATE(date) = '{date}' "
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        dictList = list()
+        for row in rows:
+            tempDict = {"content":row[1], "checked":row[2]}
+            dictList.append(tempDict)
+        return json.dumps(dictList)
+    return redirect(url_for('main_page'))
+@app.route('/tododelete/',methods=['GET','POST'])
+def tododelete():
+    if request.method == 'POST':
+        id = session['asd']
+        content = request.form['content']
+        sql = f"DELETE FROM todo WHERE userid='{id}' and todo = '{content}'"
+        cursor.execute(sql)
+        db.commit()
+        return redirect(request.url)
+    return redirect(url_for('main_page'))
+@app.route('/todocheck/',methods=['GET','POST'])
+def todocheck():
+    if request.method == 'POST':
+        id = session['asd']
+        content = request.form['content']
+        sql = f"UPDATE todo SET checked = 1 - checked WHERE userid='{id}' and todo = '{content}'"
+        cursor.execute(sql)
+        db.commit()
+        return redirect(request.url)
+    return redirect(url_for('main_page'))
+
+# @app.route('/login/')
 # def login():
 #     if request.method == 'POST':
 #         id = request.form['id']
 #         pw = request.form['pw']
-#         try:
-#             if (id in Member):
-#
-#                 session["logged_in"] = True
-#                 return render_template('login.html')
-#             else:
-#                 return '비밀번호가 틀립니다.'
-#             return '아이디가 없습니다.'
-#         except:
-#             return 'Dont login'
-#     else:
-#         return render_template('./templates/login.html')
-#
-# @app.route('/signup.html', methods=['GET', 'POST'])
-# def signup():
-#     if request.method == 'POST':
-  #      응답을 받았으면:
-        # name = request.form['name']
-        # email = request.form['email']
-        # id = request.form['id']
-        # pw = request.form['pw']
-        #
-        # sql = INSERT INTO Member (name,email,id,pw) VALUES (%s, %s, %s,%s);
-        #
-        # cursor.execute(sql, (name, email, id, pw))
-        # db.commit()
-        #
-        #return redirect(request.url)
-        # return render_template('login.html')
-    #
-    # return render_template('login.html')
-#
+#     return render_template('login.html')
 
 
-from app import app
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

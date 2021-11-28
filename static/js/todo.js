@@ -28,7 +28,8 @@ function addList() {
     // 체크박스 만들기
     input.setAttribute("type","checkbox"); // <input type="checkbox">
     input.setAttribute("class","btn-chk"); // <input type="checkbox" class="btn-chk">
-
+    input.setAttribute("id",contents.value);
+    input.addEventListener("change", checkTodo);
     var td01=document.createElement("td"); // 첫 번째 <td> 생성 (체크박스를 담음)
     td01.appendChild(input); // 첫 번째 <td> 안에 <input> 추가
 
@@ -40,6 +41,25 @@ function addList() {
 
     document.getElementById("listBody").appendChild(tr); // tbody의 #listBody에 접근하여 tr을 자식요소로 추가
 
+
+
+    var data = new FormData();
+    year = document.querySelector('.resv-year').innerText;
+    month = document.querySelector('.resv-month').innerText;
+    day = document.querySelector('.resv-day').innerText;
+    var dateString = year + "-" + month + "-" + day
+    console.log(dateString)
+    // var date =
+    data.append('content', String(contents.value))
+    data.append('date', dateString)
+    console.log("insert start");
+    fetch('/todoinsert',{
+        method: 'post',
+        body: data,
+    })
+    .then(function (response){
+        return console.log(response)
+    })
     contents.value=""; // 입력창의 내용이 추가되었으므로 입력창 지우기
 
     contents.focus(); // 입력창 포커스 (활성화)
@@ -55,5 +75,29 @@ function addList() {
 // 삭제 함수
 function deleteToDo(value) {
   const tr=value.target.parentElement;
+  content = tr.firstChild.nextSibling.innerText
+    var data = new FormData();
+    data.append('content', content)
   tr.remove();
+  fetch('/tododelete',{
+        method: 'post',
+        body: data,
+    })
+        .then(function (response){
+            return console.log(response)
+        })
+}
+function checkTodo()
+{
+    // const tr=value.target.parentElement;
+  content = this.id
+    var data = new FormData();
+    data.append('content', content)
+  fetch('/todocheck',{
+        method: 'post',
+        body: data,
+    })
+    .then(function (response){
+        return console.log(response)
+    })
 }
