@@ -154,6 +154,9 @@ def todocheck():
 #     return render_template('login.html')
 
 
+@app.route('/calendar2/', methods=['GET', 'POST'])
+def calendar2():
+    return render_template("calendar2.html")
 
 
 
