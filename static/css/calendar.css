@@ -1,7 +1,4 @@
 /* calendar 전체 */
-* {
-    font-family: 'Playfair Display', serif;
-}
 
 .calendar {
     margin: 0;
@@ -145,15 +142,18 @@
 }
 /* d-day */
 fieldset{
-    position: fixed; top:5px; right: 300px;
+    position: fixed; top:5px; right: 290px;
+    border:none;
+    border-bottom: 5px solid #8293ab;
+    padding-bottom: 1px;
 }
 
 legend{
-    font-size: 15px;
+    font-size: 25px;
 }
 
 #count{
-    font-size: 15px;
+    font-size: 20px;
     position: relative;
 }
 
