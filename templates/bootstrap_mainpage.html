@@ -17,7 +17,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../static/css/bootstrap_mainpage.css" rel="stylesheet" />
     </head>
-    <body>
+    <body style="padding: 0; margin: 0;">
         <!-- Navigation-->
             <div class="banner_container" style="height:100px";>
                 <src class="banner_head">
@@ -26,39 +26,34 @@
                 </src>
             </div>
         <!-- Masthead-->
-        <header class="masthead" style="padding-top: 50px; padding-bottom: 0px;">
-
-            <div class="container position-relative" style="height: 500px;">
-                <video width="1300px" height="300px" style="positon: top: 200px;"src="../static/img/background.mp4" controls autoplay muted loop></video>
+        <header class="masthead" style="padding: 0;">
+            <div class="container position-relative" style="height: 100px;">
                 <div class="row justify-content-center">
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
                             <span style="font-style: italic; font-size: 3.8em; color: #ffffff;
-                                         font-family: 'Playfair Display' !important;">
+                                         font-family: 'Playfair Display' !important; z-index: 1000;">
                                 Share Study Planner
                             </span>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- Icons Grid-->
-        <section class="features-icons bg-light text-center">
-            <div class="container">
-                <div class="row">
+            <video muted autoplay loop>
+                 <source src="../static/img/background.mp4" type="video/mp4">
+                 <strong>Your browser does not support the video tag.</strong>
+            </video>
 
-                    </div>
-                </div>
-            </div>
-        </section>
+        </header>
+
         <!-- Image Showcases-->
         <section class="showcase">
             <div class="container-fluid p-0">
                 <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img">
-                        <img width="500px" height="70px" src="../static/img/group_banner.JPG" controls autoplay muted loop></img>
-                        <video width="600px" height="250px" src="../static/img/reacton.mp4" controls autoplay muted loop></video>
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="padding-top: 100px;">
+                        <img style="padding-left: 150px;"width="600px" height="70px" src="../static/img/group_banner.JPG" controls autoplay muted loop></img>
+                        <video width="400px" height="250px" src="../static/img/reacton.mp4" controls autoplay muted loop></video>
                     </div>
                     <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                         <h2>그룹 & 반응 기능</h2>
@@ -93,7 +88,7 @@
         <section class="call-to-action text-white text-center" id="signup">
             <div class="container position-relative">
                 <div class="row justify-content-center">
-                    <div class="col-xl-6">
+                    <div class="col-xl-6" style="color: black;">
                         <h2 class="mb-4">Ready to get started? Sign up now!</h2>
                         <!-- Signup form-->
                         <!-- * * * * * * * * * * * * * * *-->

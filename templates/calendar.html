@@ -70,7 +70,7 @@
 
             <!-- 새로운 창 -->
             <div class="resv-wrapper">
-                <div class="resv-bg">
+                <div class="resv-bg" style="border: 3px solid #6182A2">
 
                     <!-- 페이지 나가기  -->
                     <button class="resv-close">X</button>
@@ -85,14 +85,14 @@
                         </div>
 
                         <!-- To Do LIst -->
-                        <div class="list-box" style="text-align: left; width: 300px; height: 300px; margin: 0;">
+                        <div class="list-box" style="text-align: left; width: 350px; height: 400px; margin: 0; border: 0;">
 
                             <div>
                                 <h4>To Do List</h4>
 
                                 <div class="write-box">
-                                    <input type="text" class="text-basic" placeholder="해야 할 일을 적어보세요.">
-                                    <button type="button" id="btnAdd">Add</button>
+                                    <input style="border: 3px solid #6182A2; font-color: white; border-radius: 5px;" type="text" class="text-basic" placeholder="해야 할 일을 적어보세요.">
+                                    <button type="button" id="btnAdd" style="background-color: #6182A2; color: white; border: none; border-radius: 5px;">Add</button>
                                 </div>
 
                                 <table class="list-table">
@@ -110,14 +110,9 @@
                             <div style="text-align: right; positon: fixed; top:0; right:0;">
                                 <div class="Image_upload">
                                     <input type="file" id="real-input" class="image_inputType_file" accept="img/*" required multiple>
-                                    <button class="browse-btn">사진 업로드</button>
+                                    <button style="background-color: #6182A2; color: white; border: none; border-radius: 5px;" class="browse-btn">사진 업로드</button>
                                 </div>
 
-                                <div class="Image_preview">
-                                    <h4>이미지 미리보기</h4>
-                                    <div id="imagePreview">
-                                        <img id="img" />
-                                    </div>
                                 </div>
                             </div>
                         </div>

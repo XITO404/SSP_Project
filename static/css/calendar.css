@@ -1,5 +1,4 @@
 /* calendar 전체 */
-
 .calendar {
     margin: 0;
     padding-bottom: 0;
@@ -97,6 +96,11 @@
     background-color: #8293ab;
     color: #ffffff !important;
 }
+
+.today .event-itm{
+    background-color: #8293ab !important;
+}
+
  .day{
      font-size:25px;
  }
@@ -163,4 +167,11 @@ legend{
     position: fixed; top:105px; left: 455px;
     width:40%;
     padding: 20px;
+}
+
+#listBody button{
+    border: 1px solid #6182A2;
+    background-color: #6182A2;
+    color: white;
+    border-radius: 5px;
 }
