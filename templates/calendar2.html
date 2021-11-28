@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Calendar</title>
+        <link rel="stylesheet" href="../static/css/calendar.css">
+        <link rel="stylesheet" href="../static/css/reaction.css">
+        <link rel="stylesheet" href="../static/css/group.css">
+    </head>
+    <body>
+        <div class="calendar">
+
+            <!-- calendar_header 년/월 표시, 날짜 이동 -->
+            <div class="calendar_header">
+                <div class="calendar_nav">
+                    <button class="nav-btn go-prev">&lt;</button>
+                    <span class="year"></span>년
+                    <span class="month"></span>월
+                    <button class="nav-btn go-next">&gt;</button>
+                </div>
+            </div>
+
+            <!-- 7Days -->
+            <div class="calendar_main">
+                <div class="days">
+                    <div class="day">일</div>
+                    <div class="day">월</div>
+                    <div class="day">화</div>
+                    <div class="day">수</div>
+                    <div class="day">목</div>
+                    <div class="day">금</div>
+                    <div class="day">토</div>
+                </div>
+
+                <!-- 날짜 별-->
+                <div class="dates"></div>
+            </div>
+
+            <!-- d-day -->
+            <fieldset>
+                <legend><b>[D-day]</legend>
+                <div id="count"></div>
+                <script src="d-day.js"></script>
+            </fieldset>
+
+            <!-- friend_profile -->
+            <div class="profile_f">
+                <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/profile_1.jpg"></button>
+            </div>
+
+            <!--profile-->
+            <div class="profile">
+                <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/profile_4.jpg"></button>
+            </div>
+
+            <!-- 새로운 창 -->
+            <div class="resv-wrapper">
+                <div class="resv-bg">
+
+                    <!-- 페이지 나가기  -->
+                    <button class="resv-close">X</button>
+
+                    <div class="resv_info">
+
+                        <!-- 날짜 표시 -->
+                        <div class="resv_ym">
+                            <span class="resv-year">2021</span>년
+                            <span class="resv-month">05</span>월
+                            <span class="resv-day">11</span>일
+                        </div>
+
+                        <!-- To Do LIst -->
+                        <div class="list-box" style="text-align: left; width: 300px; height: 300px; margin: 0;">
+
+                            <div>
+                                <h4>To Do List</h4>
+
+                                <div class="write-box">
+                                    <input type="text" class="text-basic" placeholder="해야 할 일을 적어보세요.">
+                                    <button type="button" id="btnAdd">Add</button>
+                                </div>
+
+                                <table class="list-table">
+                                    <colgroup>
+                                    </colgroup>
+
+                                    <tbody id="listBody"></tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <!-- Image -->
+                        <div class="Image">
+                            <div style="text-align: right; positon: fixed; top:0; right:0;">
+                                <div class="Image_upload">
+                                    <form action = "http://localhost5000/filedUpload" method = "POST"
+                                          enctype="multipart/form-data">
+                                          <input type = "file" name = "file" />
+                                          <input type = "submit"/>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- emoji -->
+                        <div id="emoji">
+                              <span id="emoji_1">
+                                <input type='button' onclick='count_1("plus")' value='😀'/>
+                              </span>
+                              <span id='result_1'>0</span>
+
+                              <span id="emoji_2">
+                                <input type='button' onclick='count_2("plus")' value='😉'/>
+                              </span>
+                              <span id='result_2'>0</span>
+
+                              <span id="emoji_3">
+                                <input type='button' onclick='count_3("plus")' value='🥰'/>
+                              </span>
+                              <span id='result_3'>0</span>
+
+                              <span id="emoji_4">
+                                <input type='button' onclick='count_4("plus")' value='🙂'/>
+                              </span>
+                              <span id='result_4'>0</span>
+
+                              <span id="emoji_5">
+                                <input type='button' onclick='count_5("plus")' value='🤭'/>
+                              </span>
+                              <span id='result_5'>0</span>
+
+                              <span id="emoji_6">
+                                <input type='button' onclick='count_6("plus")' value='🤣'/>
+                              </span>
+                              <span id='result_6'>0</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Java Script -->
+        <script src="../static/js/d-day2.js"></script>
+        <script src="../static/js/todo.js"></script>
+        <script src="../static/js/calendar.js"></script>
+        <script src="../static/js/newpage.js"></script>
+        <script src="../static/js/reaction.js"></script>
+    </body>
+</html>
