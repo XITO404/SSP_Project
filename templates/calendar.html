@@ -6,39 +6,45 @@
         <link rel="stylesheet" href="../static/css/calendar.css">
         <link rel="stylesheet" href="../static/css/reaction.css">
         <link rel="stylesheet" href="../static/css/group.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,800&display=swap');
+        </style>
     </head>
     <body>
         <div class="calendar">
+            <div class="calendar_calendar">
 
-            <!-- calendar_header 년/월 표시, 날짜 이동 -->
-            <div class="calendar_header">
-                <div class="calendar_nav">
-                    <button class="nav-btn go-prev">&lt;</button>
-                    <span class="year"></span>년
-                    <span class="month"></span>월
-                    <button class="nav-btn go-next">&gt;</button>
-                </div>
+                    <!-- calendar_header 년/월 표시, 날짜 이동 -->
+                    <div class="calendar_header">
+                        <div class="calendar_nav">
+                            <button class="nav-btn go-prev">&lt;</button>
+                            <span class="year"></span>년&nbsp;
+                            <span class="month"></span>월
+                            <button class="nav-btn go-next">&gt;</button>
+                        </div>
+                    </div>
+
+                    <!-- 7Days -->
+                    <div class="calendar_main">
+                        <div class="days">
+                            <div class="day">일</div>
+                            <div class="day">월</div>
+                            <div class="day">화</div>
+                            <div class="day">수</div>
+                            <div class="day">목</div>
+                            <div class="day">금</div>
+                            <div class="day">토</div>
+                        </div>
+                    </div>
+
+                    <!-- 날짜 별-->
+                    <div class="dates"></div>
             </div>
 
-            <!-- 7Days -->
-            <div class="calendar_main">
-                <div class="days">
-                    <div class="day">일</div>
-                    <div class="day">월</div>
-                    <div class="day">화</div>
-                    <div class="day">수</div>
-                    <div class="day">목</div>
-                    <div class="day">금</div>
-                    <div class="day">토</div>
-                </div>
 
-                <!-- 날짜 별-->
-                <div class="dates"></div>
-            </div>
 
             <!-- d-day -->
             <fieldset>
-                <legend><b>[D-day]</legend>
                 <div id="count"></div>
                 <script src="d-day.js"></script>
             </fieldset>
@@ -46,10 +52,10 @@
             <!-- group -->
             <div id="Group">
                 <div class="Friend_button">
-                    <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/Jenny.jpg"></button>
-                    <button class="moon" type="button" onclick="location.href=''"><img src="../static/img/ming.jpg"></button>
-                    <button class="manoi" type="button" onclick="location.href=''"><img src="../static/img/Jenny.jpg"></button>
-                    <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/Jenny.jpg"></button>
+                    <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/profile_1.jpg"></button>
+                    <button class="moon" type="button" onclick="location.href=''"><img src="../static/img/profile_5.jpg"></button>
+                    <button class="manoi" type="button" onclick="location.href=''"><img src="../static/img/profile_2.jpg"></button>
+                    <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/profile_3.jpg"></button>
                 </div>
                 &nbsp;
                 <div class="Plus_button" style="border-color: #F2F2F2">
@@ -59,12 +65,12 @@
 
             <!--profile-->
             <div class="profile">
-                <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/Jenny.jpg"></button>
+                <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/profile_4.jpg"></button>
             </div>
 
             <!-- 새로운 창 -->
             <div class="resv-wrapper">
-                <div class="resv-bg">
+                <div class="resv-bg" style="border: 3px solid #6182A2">
 
                     <!-- 페이지 나가기  -->
                     <button class="resv-close">X</button>
@@ -74,19 +80,19 @@
                         <!-- 날짜 표시 -->
                         <div class="resv_ym">
                             <span class="resv-year">2021</span>년
-                            <span class="resv-month">05</span>월
-                            <span class="resv-day">11</span>일
+                            <span class="resv-month">11</span>월
+                            <span class="resv-day">28</span>일
                         </div>
 
                         <!-- To Do LIst -->
-                        <div class="list-box" style="text-align: left; width: 300px; height: 300px; margin: 0;">
+                        <div class="list-box" style="text-align: left; width: 350px; height: 400px; margin: 0; border: 0;">
 
                             <div>
                                 <h4>To Do List</h4>
 
                                 <div class="write-box">
-                                    <input type="text" class="text-basic" placeholder="해야 할 일을 적어보세요.">
-                                    <button type="button" id="btnAdd">Add</button>
+                                    <input style="border: 3px solid #6182A2; font-color: white; border-radius: 5px;" type="text" class="text-basic" placeholder="해야 할 일을 적어보세요.">
+                                    <button type="button" id="btnAdd" style="background-color: #6182A2; color: white; border: none; border-radius: 5px;">Add</button>
                                 </div>
 
                                 <table class="list-table">
@@ -104,14 +110,9 @@
                             <div style="text-align: right; positon: fixed; top:0; right:0;">
                                 <div class="Image_upload">
                                     <input type="file" id="real-input" class="image_inputType_file" accept="img/*" required multiple>
-                                    <button class="browse-btn">사진업로드</botton>
+                                    <button style="background-color: #6182A2; color: white; border: none; border-radius: 5px;" class="browse-btn">사진 업로드</button>
                                 </div>
 
-                                <div class="Image_preview">
-                                    <h4>이미지 미리보기</h4>
-                                    <div id="imagePreview">
-                                        <img id="img" />
-                                    </div>
                                 </div>
                             </div>
                         </div>

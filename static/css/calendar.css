@@ -1,15 +1,12 @@
 /* calendar 전체 */
 .calendar {
-    width:40%;
     margin: 0;
     padding-bottom: 0;
-    position: fixed; top:140px; left: 450px;
 }
 
 /* calendar_header 년/월 표시, 날짜 이동 */
 .calendar_header {
     display: inline-block;
-    position: fixed; top:110px; left: 623px;
 }
 
 .calendar_nav {
@@ -82,12 +79,12 @@
 
 .day:nth-child(7n+1),
 .date:nth-child(7n+1) {
-    color: #D13E3E;
+    color: #bf4d5e;
 }
 
 .day:nth-child(7n),
 .date:nth-child(7n) {
-    color: #396EE2;
+    color: #5068a6;
 }
 
 .other {
@@ -96,9 +93,10 @@
 
 .today {
     position: relative;
-    background-color: #ff1c1c96;
+    background-color: #8293ab;
     color: #ffffff !important;
 }
+
  .day{
      font-size:25px;
  }
@@ -144,14 +142,31 @@
 }
 
 fieldset{
-    position: fixed; top:5px; right: 300px;
+    position: fixed; top:5px; right: 230px;
+    border: none;
+    border-bottom: 5px solid #8293ab;
 }
 
 legend{
-    font-size: 15px;
+    font-size: 25px;
 }
 
 #count{
-    font-size: 15px;
+    font-size: 20px;
     position: relative;
+}
+
+.calendar_calendar{
+    border-top: 10px solid #8293ab;
+    border-bottom: 3px solid #8293ab;
+    position: fixed; top:105px; left: 455px;
+    width:40%;
+    padding: 20px;
+}
+
+#listBody button{
+    border: 1px solid #6182A2;
+    background-color: #6182A2;
+    color: white;
+    border-radius: 5px;
 }
