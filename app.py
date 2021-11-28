@@ -19,11 +19,11 @@ app = Flask(__name__)
 def main_page():
     return render_template("bootstrap_mainpage.html")
 
-@app.route('/calendar')
+@app.route('/calendar/')
 def calendar():
     return render_template("calendar.html")
 
-@app.route('/todo.html')
+@app.route('/todo/')
 def todo():
     return render_template("todo.html")
 
