@@ -16,16 +16,20 @@
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap" rel="stylesheet">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../static/css/bootstrap_mainpage.css" rel="stylesheet" />
+
     </head>
-    <body style="padding: 0; margin: 0;">
+    <body>
         <!-- Navigation-->
             <div class="banner_container" style="height:100px";>
+                <a class="navbar-brand" href="#!"><img style="width:90px; margin-left: 10px; margin-top: 12px;" src="../static/img/ssp-logo.JPG"></a>
                 <src class="banner_head">
-                    <a class="btn btn-primary" style="margin-left: 25px; margin-top: 20px;" onclick="location.href='login'">Login</a>
-                    <a class="btn btn-primary" style="margin-left: 5px; margin-top: 20px;" href="#signup">Sign Up</a>
+                    <a  id="login_session" class="btn btn-primary" style="margin-left: 25px; margin-top: 20px;display:inline;" onclick="location.href='login'">Login</a>
+                    <a id="signup_session" class="btn btn-primary" style="margin-left: 5px; margin-top: 20px;display:inline;" href="#signup">Sign Up</a>
+                    <span id="welcome_session" style="display: none"></span>
+                    <a id="logout_session" class="btn btn-primary" style="margin-left: 5px; margin-top: 20px;display:inline;" onclick="location.href='logout'">Logout</a>
                 </src>
             </div>
-        <!-- Masthead-->
+       <!-- Masthead-->
         <header class="masthead" style="padding: 0;">
             <div class="container position-relative" style="height: 100px;">
                 <div class="row justify-content-center">
@@ -61,8 +65,9 @@
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-lg-6 text-white showcase-img"></div>
-                    <img style="padding-left: 150px;"width="600px" height="70px" src="../static/img/group_banner.JPG" controls autoplay muted loop></img>
+                    <div class="col-lg-6 text-white showcase-img">
+                        <img style="width: 580px; height:480px; padding-left: 100px;" src="../static/img/calendar.jpg"></img>
+                    </div>
                     <div class="col-lg-6 my-auto showcase-text">
                         <h2>
                             <a style="margin-left: 25px; margin-top: 20px;" onclick="location.href='calendar'">
@@ -73,6 +78,8 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
             </div>
         </section>
         <section class="features-icons bg-light text-center">
@@ -87,7 +94,7 @@
         <section class="call-to-action text-white text-center" id="signup">
             <div class="container position-relative">
                 <div class="row justify-content-center">
-                    <div class="col-xl-6" style="color: black;">
+                    <div class="col-xl-6">
                         <h2 class="mb-4">Ready to get started? Sign up now!</h2>
                         <!-- Signup form-->
                         <!-- * * * * * * * * * * * * * * *-->
@@ -116,7 +123,7 @@
                             <li class="list-inline-item">⋅</li>
                             <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
                         </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; SSP 2021. All Rights Reserved.</p>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2021. All Rights Reserved.</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
@@ -138,6 +145,60 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+         <script>
+            const asd = {{session|tojson}};
+            // console.log(typeof(asd))
+            console.log(asd['asd'])
+            var login = document.getElementById("login_session");
+            var signup=document.getElementById("signup_session");
+            var welcome_msg=document.getElementById("welcome_session");
+            var logout=document.getElementById("logout_session");
+
+
+            console.log(login)
+            if(asd['asd'] != undefined)
+            {
+                login.style.display="none";
+                signup.style.display="none";
+                welcome_msg.style.display="inline";
+                logout.style.display="inline";
+
+                welcome_msg.innerText = asd['asd'] + "님 환영합니다!";
+
+
+                console.log("로그인 성공")
+
+            }
+            else
+            {
+                login.style.display="inline";
+                signup.style.display="inline";
+                welcome_msg.style.display="none";
+                logout.style.display="none";
+                console.log("로그인 실패")
+            }
+
+
+            // if(String({{session['asd']}}) != "")
+            // {
+            //     console.log(String({{session['asd']}}))
+            // }
+            // else
+            // {
+            //     console.log("로그인 X")
+            // }
+
+
+            // console.log({{session['asd']}})
+
+            //
+            // 만약 세션 아이디 있으면
+            //     가입, 로그인 버튼 숨기기
+            //     ~님 환영합니다. 나타내기
+            // 만약 세션 아이디 없으면
+            //     가입, 로그인 버튼 나타내기
+            //     ~님 환영합니다. 숨기기
+        </script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

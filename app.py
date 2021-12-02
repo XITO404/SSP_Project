@@ -11,6 +11,24 @@ db = pymysql.connect(host='localhost', port=3306, user='root', passwd='0000',db=
 cursor = db.cursor()
 
 
+### 초기 테이블 생성 ###
+create_todos_table_query = 'CREATE TABLE todos ( id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, userid varchar(50) NOT NULL, todo varchar(200) NOT NULL, checked boolean not null default 0, date date NOT NULL, likes int NOT NULL default 0, dislikes int NOT NULL default 0);'
+create_friends_table_query = 'CREATE TABLE friends ( following varchar(50) NOT NULL, follower varchar(50) NOT NULL, date date NOT NULL);'
+try:
+    cursor.execute(create_todos_table_query)
+    print(">>> todo table create complete")
+except Exception as e:
+    print(">>> todo table already exists")
+
+try:
+    cursor.execute(create_friends_table_query)
+    print(">>> friends table create complete")
+except Exception as e:
+    print(">>> friends table already exists")
+#####################
+
+
+
 # 템플릿 랜더링은 아래 구조로 사용
 # @app.route('경로')
 # def 파일명():
@@ -38,9 +56,6 @@ def login():
 
         # sql = f"select * from Member where id='{id}'"
         cursor.execute(sql)
-
-
-
 
         session['asd']=id
 
@@ -105,18 +120,23 @@ def todoinsert():
         content = request.form['content']
         date = request.form['date']
         id = session['asd']
-        sql = f"INSERT INTO todo VALUES('{id}','{content}',false, '{date}')"
+
+        sql = f"insert into todos(userid, todo, checked, date, likes, dislikes) values ('{id}', '{content}', 0, '{date}', 0, 0);"
+
+        # sql = f"INSERT INTO todo VALUES('{id}','{content}',false, '{date}')"
+
         cursor.execute(sql)
         db.commit()
         return redirect(request.url)
     return redirect(url_for('main_page'))
+
 @app.route('/todoselect/',methods=['GET','POST'])
 def todoselect():
     if request.method == 'POST':
         id = session['asd']
         date = request.form['date']
 
-        sql = f"SELECT * FROM todo WHERE userid = '{id}' and DATE(date) = '{date}' "
+        sql = f"SELECT * FROM todos WHERE userid = '{id}' and DATE(date) = '{date}' "
         cursor.execute(sql)
         rows = cursor.fetchall()
         dictList = list()
@@ -125,12 +145,13 @@ def todoselect():
             dictList.append(tempDict)
         return json.dumps(dictList)
     return redirect(url_for('main_page'))
+
 @app.route('/tododelete/',methods=['GET','POST'])
 def tododelete():
     if request.method == 'POST':
         id = session['asd']
         content = request.form['content']
-        sql = f"DELETE FROM todo WHERE userid='{id}' and todo = '{content}'"
+        sql = f"DELETE FROM todos WHERE userid='{id}' and todo = '{content}'"
         cursor.execute(sql)
         db.commit()
         return redirect(request.url)
@@ -140,11 +161,16 @@ def todocheck():
     if request.method == 'POST':
         id = session['asd']
         content = request.form['content']
-        sql = f"UPDATE todo SET checked = 1 - checked WHERE userid='{id}' and todo = '{content}'"
+        sql = f"UPDATE todos SET checked = 1 - checked WHERE userid='{id}' and todo = '{content}'"
         cursor.execute(sql)
         db.commit()
         return redirect(request.url)
     return redirect(url_for('main_page'))
+
+# Ranking page
+@app.route('/ranking',methods=['GET'])
+def rank():
+    return render_template("ranking.html")
 
 # @app.route('/login/')
 # def login():
@@ -158,6 +184,29 @@ def todocheck():
 def calendar2():
     return render_template("calendar2.html")
 
+
+### Ajax - 팔로우 리스트 반환 ###
+@app.route('/follow', methods=['get'])
+def follow():
+    from flask import jsonify
+
+    id = session['asd']
+
+    sql = f"SELECT * FROM friends WHERE follower='{id}'"
+
+    cursor.execute(sql)
+    rows = cursor.fetchall()
+
+    follow_list = []
+    for i in rows:
+        follow_list.append(i[0])
+
+    # following = rows[0]
+    # data = {'following': following}
+
+    print(f">>> follow_list : {follow_list}")
+
+    return jsonify(follow_list)
 
 
 

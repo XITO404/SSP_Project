@@ -1,6 +1,21 @@
 document.getElementById("btnAdd").addEventListener("click",addList);
 // html에서 id가 btnAdd인 요소를 찾고 클릭 시 동작할 addList 함수 연결
 
+
+// 로그인한 사용자의 팔로잉 리스트
+fetch('/follow',{
+    method: 'get'
+})
+.then(data => {
+    data.json().then((value) => {
+      console.log(value[0]);
+    });
+})
+.error()
+{
+    console.log("fail")
+}
+
 function addList() {
     var contents = document.querySelector(".text-basic");
     // 입력창에 접근
@@ -30,7 +45,10 @@ function addList() {
     input.setAttribute("class","btn-chk"); // <input type="checkbox" class="btn-chk">
     input.setAttribute("id",contents.value);
     input.addEventListener("change", checkTodo);
-    var td01=document.createElement("td"); // 첫 번째 <td> 생성 (체크박스를 담음)
+    var td01=document.createElement("td"); // 첫 번째 .
+
+
+    ..............// <td> 생성 (체크박스를 담음)
     td01.appendChild(input); // 첫 번째 <td> 안에 <input> 추가
 
     var td02 = document.createElement("td"); // 두 번째 <td> 생성 (텍스트를 담음)
@@ -87,6 +105,7 @@ function deleteToDo(value) {
             return console.log(response)
         })
 }
+
 function checkTodo()
 {
     // const tr=value.target.parentElement;
@@ -100,4 +119,19 @@ function checkTodo()
     .then(function (response){
         return console.log(response)
     })
+}
+
+function like(state)
+{
+    todo_id = 1
+    if(state == 1) // like
+    {
+        fetch('/like',{
+            method: 'post',
+            body: data,
+        })
+        .then(function (response){
+            return console.log(response)
+        })
+    }
 }
