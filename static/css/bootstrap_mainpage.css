@@ -11316,7 +11316,6 @@ header.masthead {
 header.masthead:before {
   content: "";
   position: absolute;
-  background-color: #1c375e;
   height: 100%;
   width: 100%;
   top: 0;
@@ -11358,7 +11357,7 @@ header.masthead h1, header.masthead .h1 {
 }
 .testimonials .testimonial-item img {
   max-width: 12rem;
-  box-shadow: 0px 5px 5px 0px #adb5bd;
+  box-shadow: 0px 5px 5px 0px;
 }
 
 .call-to-action {
@@ -11376,7 +11375,6 @@ header.masthead h1, header.masthead .h1 {
 .call-to-action:before {
   overflow: hidden;
   position: relative;
-  background-color: #1c375e;
   height: 100%;
   width: 100%;
   top: 0;

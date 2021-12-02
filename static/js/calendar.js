@@ -79,3 +79,18 @@ const goToday = () => {
     date = new Date();
     renderCalender();
 };
+
+function setThumbnail(event){
+          var reader = new FileReader();
+
+          reader.onload = function(event){
+             var img = document.createElement("img");
+             img.setAttribute("src", event.target.result);
+             img.setAttribute("class", "col-lg-6");
+             document.querySelector("div#image_container").appendChild(img);
+          };
+
+          reader.readAsDataURL(event.target.files[0]);
+       }
+
+function showPopup() { window.open("08_2_popup.html", "a", "width=400, height=300, left=100, top=50"); }
