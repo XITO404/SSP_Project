@@ -58,6 +58,7 @@
             <!-- group -->
             <div id="Group">
                 <div class="Friend_button">
+
 <!--                    <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/profile_1.jpg"></button>-->
 <!--                    <button class="moon" type="button" onclick="location.href=''"><img src="../static/img/profile_5.jpg"></button>-->
 <!--                    <button class="Moon" type="button" onclick="location.href='../calendar2'"><img src="../static/img/profile_2.jpg"></button>-->
@@ -65,13 +66,13 @@
                 </div>
                 &nbsp;
                 <div class="Plus_button" style="border-color: #F2F2F2">
-                    <button class="plus_mark"onclick="showPopup();" style="font-size: 30px; color:#F2F2F2; ">+</button>
+                    <button class="plus_mark" onclick="showPopup();" style="font-size: 30px; color:#F2F2F2; ">+</button>
                 </div>
             </div>
 
             <!--profile-->
             <div class="profile">
-                <button class="mandi" type="button" onclick="location.href=''"><img src="/static/img/profile_4.jpg"></button>
+                <button class="mandi" type="button" onclick="location.href=''"><img src="/static/img/profile_4.jpg"><script>print(session['asd'])</script></button>
             </div>
 
             <!-- 새로운 창 -->
@@ -123,7 +124,15 @@
                                     <div id="image_container"></div>
                                 </div>
                             </li>
-
+                        <div id="emoji">
+                              <span id="emoji_1">
+                                <input type='button' onclick='count_1("plus")' value='../static/img/like.jpg'/>
+                              </span>
+                                <span id='result_1'>0</span>
+                              <span id="emoji_2">
+                                <input type='button' onclick='count_2("plus")' value='../static/img/dislike.jpg'/>
+                              </span>
+                        </div>
                         <!-- emoji
                         <div id="emoji">
                               <span id="emoji_1">

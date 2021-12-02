@@ -11,7 +11,7 @@ db = pymysql.connect(host='localhost', port=3306, user='root', passwd='0000',db=
 cursor = db.cursor()
 
 
-### 초기 테이블 생성 ###
+### 초기 테이블 생성 #######################################################################################################################
 create_todos_table_query = 'CREATE TABLE todos ( id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, userid varchar(50) NOT NULL, todo varchar(200) NOT NULL, checked boolean not null default 0, date date NOT NULL, likes int NOT NULL default 0, dislikes int NOT NULL default 0);'
 create_friends_table_query = 'CREATE TABLE friends ( following varchar(50) NOT NULL, follower varchar(50) NOT NULL, date date NOT NULL);'
 try:
@@ -25,7 +25,7 @@ try:
     print(">>> friends table create complete")
 except Exception as e:
     print(">>> friends table already exists")
-#####################
+###########################################################################################################################################
 
 
 
@@ -33,6 +33,11 @@ except Exception as e:
 # @app.route('경로')
 # def 파일명():
 #   return render_template('파일명.확장자')
+
+
+######################################################################################################################
+# 기본 기능 페이지
+######################################################################################################################
 
 @app.route('/')
 def main_page():
@@ -45,6 +50,18 @@ def calendar():
 @app.route('/todo/')
 def todo():
     return render_template("todo.html")
+
+
+@app.route('/calendar2/', methods=['GET', 'POST'])
+def calendar2():
+    return render_template("calendar2.html")
+######################################################################################################################
+
+
+
+######################################################################################################################
+# 회원가입 관련
+######################################################################################################################
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
@@ -114,6 +131,14 @@ def logout():
     session.clear()
     return redirect(url_for('main_page'))
 
+######################################################################################################################
+
+
+
+######################################################################################################################
+# 플래너 관련
+######################################################################################################################
+
 @app.route('/todoinsert/',methods=['GET','POST'])
 def todoinsert():
     if request.method == 'POST':
@@ -156,6 +181,8 @@ def tododelete():
         db.commit()
         return redirect(request.url)
     return redirect(url_for('main_page'))
+
+
 @app.route('/todocheck/',methods=['GET','POST'])
 def todocheck():
     if request.method == 'POST':
@@ -167,23 +194,17 @@ def todocheck():
         return redirect(request.url)
     return redirect(url_for('main_page'))
 
-# Ranking page
-@app.route('/ranking',methods=['GET'])
-def rank():
-    return render_template("ranking.html")
 
-# @app.route('/login/')
-# def login():
-#     if request.method == 'POST':
-#         id = request.form['id']
-#         pw = request.form['pw']
-#     return render_template('login.html')
+######################################################################################################################
 
 
-@app.route('/calendar2/', methods=['GET', 'POST'])
-def calendar2():
-    return render_template("calendar2.html")
 
+
+
+
+#########################################################################################
+# 팔로우 구현 관련
+##########################################################################################
 
 ### Ajax - 팔로우 리스트 반환 ###
 @app.route('/follow', methods=['get'])
@@ -205,12 +226,71 @@ def follow():
     # data = {'following': following}
 
     print(f">>> follow_list : {follow_list}")
-
     return jsonify(follow_list)
 
+
+# 친구 추가해서 검색하는 라우터
 @app.route('/search_friend/')
 def search_friend():
+    if request.method == 'POST':
+        friend = request.form['friend']
+        sql = f"SELECT * FROM member WHERE id = '{friend}'"
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+
+    #     # 회원이 존재하면
+    #     if len(rows) == 1:
+    #         #sql = f"INSERT INTO friends(following,follower,date) VALUES ('{following}', '{follower}', '{date}')"
+    #         cursor.execute(sql)
+    #         flash("로그인 성공")
+    #         return redirect(url_for('main_page'))
+    #
+    #     # 회원이 존재하지 않는다면
+    #     else:
+    #         flash("로그인 실패")
+    #         return render_template("login.html")
+    # elif request.method == 'GET':
+    #     return render_template("login.html")
     return render_template("search_friend.html")
+
+# 친구 검색시 친구 있는지 확인하는 라우터
+@app.route('/member_confirm/',methods=['GET','POST'])
+def member_confirm():
+    return render_template("친구 검색해서 팔로우 보여주는 파일")
+
+# 팔로우시 friends 테이블에 팔로우 추가
+@app.route('/follow_action/')
+def follow_action():
+    return render_template("다시 캘린더페이지로 리다이렉트하는 코드")
+
+## 위 두 파일 추가
+
+######################################################################################################################
+
+
+
+
+
+
+
+
+######################################################################################################################
+# 플랜 찬반 관련
+######################################################################################################################
+
+
+#####################################################################################################################
+# 랭킹 관련
+######################################################################################################################
+
+# 랭킹 페이지
+@app.route('/ranking',methods=['GET'])
+def rank():
+    return render_template("ranking.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
+######################################################################################################################
+
+
