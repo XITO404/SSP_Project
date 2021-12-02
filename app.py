@@ -1,5 +1,6 @@
 # app.py는 서버를 돌리는 파일
 from flask import Flask, session, render_template, redirect, request, url_for, flash, jsonify, json
+
 # from flaskext.mysql import MySQL
 
 import pymysql
@@ -29,23 +30,25 @@ except Exception as e:
 
 
 
-# 템플릿 랜더링은 아래 구조로 사용
-# @app.route('경로')
-# def 파일명():
-#   return render_template('파일명.확장자')
 
+# 기본 페이지
 @app.route('/')
 def main_page():
     return render_template("bootstrap_mainpage.html")
 
+# 캘린더 페이지
 @app.route('/calendar/')
 def calendar():
     return render_template("calendar.html")
 
+
+# 투두페이지
 @app.route('/todo/')
 def todo():
     return render_template("todo.html")
 
+
+# 로그인 페이지
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     if request.method=='POST':
@@ -53,9 +56,10 @@ def login():
         pw = request.form['pw']
         # name=request.form['name']
         sql = f"select * from Member where id='{id}' and pw='{pw}'"
-
-        # sql = f"select * from Member where id='{id}'"
         cursor.execute(sql)
+
+        # 로그인한 회원의 이름 select
+        '''sql_name = f"SELECT name FROM member WHERE id='{id}'"'''
 
         session['asd']=id
 
@@ -65,6 +69,7 @@ def login():
         if len(rows)==1:
             flash("로그인 성공")
             return redirect(url_for('main_page'))
+
         else:
             flash("로그인 실패")
             return render_template("login.html")
@@ -156,6 +161,7 @@ def tododelete():
         db.commit()
         return redirect(request.url)
     return redirect(url_for('main_page'))
+
 @app.route('/todocheck/',methods=['GET','POST'])
 def todocheck():
     if request.method == 'POST':
@@ -180,35 +186,24 @@ def rank():
 #     return render_template('login.html')
 
 
-@app.route('/calendar2/', methods=['GET', 'POST'])
-def calendar2():
-    return render_template("calendar2.html")
+@app.route('/calendar2/<id>', methods=['GET', 'POST'])
+def calendar2(id):
+    return render_template("calendar2.html", id=id)
 
 
 ### Ajax - 팔로우 리스트 반환 ###
 @app.route('/follow', methods=['get'])
 def follow():
-    from flask import jsonify
 
-    id = session['asd']
+    id = session['asd'] # 현재 접속중인 사용자의 ID 가져오기
 
-    sql = f"SELECT * FROM friends WHERE follower='{id}'"
-
+    sql = f"SELECT * FROM friends WHERE follower='{id}'" # DB에서 해당 사용자가 팔로우 하는 사용자 ID 리스트 가져오기
     cursor.execute(sql)
     rows = cursor.fetchall()
 
-    follow_list = []
-    for i in rows:
-        follow_list.append(i[0])
+    follow_list = [i[0] for i in rows] # 가져온 팔로우 계정들을 리스트로 변환
 
-    # following = rows[0]
-    # data = {'following': following}
-
-    print(f">>> follow_list : {follow_list}")
-
-    return jsonify(follow_list)
-
-
+    return jsonify(follow_list) # calendar.html에서 요청한 fetch로 데이터 반환
 
 if __name__ == '__main__':
     app.run(debug=True)

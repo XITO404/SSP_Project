@@ -1,0 +1,28 @@
+h1,h2,h3,h4,h5,h6 {
+    text-align: center;
+}
+
+.ranking_table {
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  border-collapse: collapse;
+  width:70%;
+  height:50%;
+}
+.ranking_table th {
+  padding: 10px;
+  color: #303030;
+  background-color: #d1d1d1;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+.ranking_table td {
+  color: #669;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.ranking_table tr:hover td {
+  color: #004;
+}

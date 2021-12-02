@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
     <head>
         <meta charset="UTF-8">
         <title>Calendar</title>
@@ -8,6 +8,12 @@
         <link rel="stylesheet" href="../static/css/group.css">
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,800&display=swap');
+            .resv_info li{
+                float: left;
+                list-style-type:none;
+                list-style:none;
+                margin-right:30px;
+            }
         </style>
     </head>
     <body>
@@ -52,118 +58,142 @@
             <!-- group -->
             <div id="Group">
                 <div class="Friend_button">
-                    <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/profile_1.jpg"></button>
-                    <button class="moon" type="button" onclick="location.href=''"><img src="../static/img/profile_5.jpg"></button>
-                    <button class="Moon" type="button" onclick="location.href='../calendar2'"><img src="../static/img/profile_2.jpg"></button>
-                    <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/profile_3.jpg"></button>
+<!--                    <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/profile_1.jpg"></button>-->
+<!--                    <button class="moon" type="button" onclick="location.href=''"><img src="../static/img/profile_5.jpg"></button>-->
+<!--                    <button class="Moon" type="button" onclick="location.href='../calendar2'"><img src="../static/img/profile_2.jpg"></button>-->
+<!--                    <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/profile_3.jpg"></button>-->
                 </div>
                 &nbsp;
                 <div class="Plus_button" style="border-color: #F2F2F2">
-                    <button class="plus_mark"onclick="location.href=''" style="font-size: 30px; color:#F2F2F2; ">+</button>
+                    <button class="plus_mark"onclick="showPopup();" style="font-size: 30px; color:#F2F2F2; ">+</button>
                 </div>
             </div>
 
             <!--profile-->
             <div class="profile">
-                <button class="mandi" type="button" onclick="location.href=''"><img src="../static/img/profile_4.jpg"></button>
+                <button class="mandi" type="button" onclick="location.href=''"><img src="/static/img/profile_4.jpg"></button>
             </div>
 
             <!-- 새로운 창 -->
             <div class="resv-wrapper">
-                <div class="resv-bg" style="border: 3px solid #6182A2">
+                <div class="resv-bg" style="border: 3px solid #6182A2; padding: 10px;">
 
                     <!-- 페이지 나가기  -->
                     <button class="resv-close">X</button>
 
                     <div class="resv_info">
-
+                    <ul>
                         <!-- 날짜 표시 -->
                         <div class="resv_ym">
                             <span class="resv-year">2021</span>년
                             <span class="resv-month">11</span>월
                             <span class="resv-day">28</span>일
                         </div>
+                            <li>
+                            <!-- To Do LIst -->
+                            <div class="list-box" style="width: 290px;">
 
-                        <!-- To Do LIst -->
-                        <div class="list-box" style="text-align: left; width: 350px; height: 400px; margin: 0; border: 0;">
+                                <div>
+                                    <h4>To Do List</h4>
 
-                            <div>
-                                <h4>To Do List</h4>
+                                    <div class="write-box">
+                                        <input style="border: 3px solid #6182A2; font-color: white; border-radius: 5px;" type="text" class="text-basic" placeholder="해야 할 일을 적어보세요.">
+                                        <button type="button" id="btnAdd" style="background-color: #6182A2; color: white; border: none; border-radius: 5px;">Add</button>
+                                    </div>
 
-                                <div class="write-box">
-                                    <input style="border: 3px solid #6182A2; font-color: white; border-radius: 5px;" type="text" class="text-basic" placeholder="해야 할 일을 적어보세요.">
-                                    <button type="button" id="btnAdd" style="background-color: #6182A2; color: white; border: none; border-radius: 5px;">Add</button>
+                                    <table class="list-table">
+                                        <colgroup>
+                                        </colgroup>
+
+                                        <tbody id="listBody"></tbody>
+                                    </table>
                                 </div>
 
-                                <table class="list-table">
-                                    <colgroup>
-                                    </colgroup>
-
-                                    <tbody id="listBody"></tbody>
-                                </table>
                             </div>
+                            </li>
 
-                        </div>
+                            <li>
+                            <!-- Image -->
 
-                        <!-- Image -->
-                        <div class="Image">
-                            <div style="text-align: right; positon: fixed; top:0; right:0;">
-                                <div class="Image_upload">
-                                    <input type="file" id="real-input" class="image_inputType_file" accept="img/*" required multiple>
-                                    <button style="background-color: #6182A2; color: white; border: none; border-radius: 5px;" class="browse-btn">사진 업로드</button>
+                                <div class="Image">
+                                    <div class="form-group">
+                                        <input class="form-control form-control-user" type="file"
+                                        name="product_image" id="product_image" onchange="setThumbnail(event);">
+                                    </div>
+                                    <div id="image_container"></div>
                                 </div>
+                            </li>
 
-                                </div>
-                            </div>
-                        </div>
-                    <div id="like">
-                        <img src="/static/img/like.jpg" width="50px" hegith="50px" onclick="like(1)">
-                        <img src="/static/img/dislike.jpg" width="50px" hegith="50px" onclick="like(0)">
+                        <!-- emoji
+                        <div id="emoji">
+                              <span id="emoji_1">
+                                <input type='button' onclick='count_1("plus")' value='😀'/>
+                              </span>
+                              <span id='result_1'>0</span>
+
+                              <span id="emoji_2">
+                                <input type='button' onclick='count_2("plus")' value='😉'/>
+                              </span>
+                              <span id='result_2'>0</span>
+
+                              <span id="emoji_3">
+                                <input type='button' onclick='count_3("plus")' value='🥰'/>
+                              </span>
+                              <span id='result_3'>0</span>
+
+                              <span id="emoji_4">
+                                <input type='button' onclick='count_4("plus")' value='🙂'/>
+                              </span>
+                              <span id='result_4'>0</span>
+
+                              <span id="emoji_5">
+                                <input type='button' onclick='count_5("plus")' value='🤭'/>
+                              </span>
+                              <span id='result_5'>0</span>
+
+                              <span id="emoji_6">
+                                <input type='button' onclick='count_6("plus")' value='🤣'/>
+                              </span>
+                              <span id='result_6'>0</span>
+                        </div>-->
+
+                    </ul>
                     </div>
-<!--                        &lt;!&ndash; emoji &ndash;&gt;-->
-<!--                        <div id="emoji">-->
-<!--                              <span id="emoji_1">-->
-<!--                                <input type='button' onclick='count_1("plus")' value='😀'/>-->
-<!--                              </span>-->
-<!--                              <span id='result_1'>0</span>-->
-
-<!--                              <span id="emoji_2">-->
-<!--                                <input type='button' onclick='count_2("plus")' value='😉'/>-->
-<!--                              </span>-->
-<!--                              <span id='result_2'>0</span>-->
-
-<!--                              <span id="emoji_3">-->
-<!--                                <input type='button' onclick='count_3("plus")' value='🥰'/>-->
-<!--                              </span>-->
-<!--                              <span id='result_3'>0</span>-->
-
-<!--                              <span id="emoji_4">-->
-<!--                                <input type='button' onclick='count_4("plus")' value='🙂'/>-->
-<!--                              </span>-->
-<!--                              <span id='result_4'>0</span>-->
-
-<!--                              <span id="emoji_5">-->
-<!--                                <input type='button' onclick='count_5("plus")' value='🤭'/>-->
-<!--                              </span>-->
-<!--                              <span id='result_5'>0</span>-->
-
-<!--                              <span id="emoji_6">-->
-<!--                                <input type='button' onclick='count_6("plus")' value='🤣'/>-->
-<!--                              </span>-->
-<!--                              <span id='result_6'>0</span>-->
-<!--                        </div>-->
-                    </div>
-
                 </div>
             </div>
 
         </div>
 
         <!-- Java Script -->
-        <script src="../static/js/d-day.js"></script>
-        <script src="../static/js/todo.js"></script>
-        <script src="../static/js/calendar.js"></script>
-        <script src="../static/js/newpage.js"></script>
-        <script src="../static/js/reaction.js"></script>
+        <script src="/static/js/d-day.js"></script>
+        <script src="/static/js/todo.js"></script>
+        <script src="/static/js/calendar.js"></script>
+        <script src="/static/js/newpage.js"></script>
+        <script src="/static/js/reaction.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+
+            // 로그인한 사용자의 팔로잉 리스트
+            fetch('/follow',{
+                method: 'get'
+            })
+
+            .then(data => {
+                console.log(data)
+                data.json().then((value) => {
+                    for (id in value)
+                    {
+                        icon = "<button className="+value[id]+" type='button' onclick= 'location.href=" + '"/calendar2/' + value[id] + '"' + "'> <img src=/static/img/profile_"+(Number(id)%4+1)+".jpg> "+value[id]+" </button>"
+                        $('.Friend_button').append(icon)
+                    }
+                });
+            })
+        </script>
     </body>
-</html>
+</ht웹서버를 실행하고 크롬 브라우저로 http://localhost:3000/jquery.html에 접속합니다. Github ID를 입력하면 정보를 보여주는 웹 어플리케이션입니다.
+
+Blackboxing
+
+Basic 예제에서는 라이브러리를 사용하지 않았기 때문에 submit 이벤트를 검사할 때 정상적으로 소스에 중단점이 걸린 것을 확인했습니다. jQuery같은 라이브러리를 쓰면 상황이 좀 달라지는데 $(element).click()과 같은 코드는 이벤트 생성을 jQuery 라이브러리에 위임하고 실제로 jquery.js 파일에서 이벤트가 발생합니다.
+
+테스트를 위해 Event Listener중에 click이벤트에 중단점을 생성합니다. 디버깅 정보 창에서 Event Listener Breakpoints섹션을 열고 Mouse>click을 체크하면 됩니다. Fetch Avatar를 클릭해볼까요?ml>
