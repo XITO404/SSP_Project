@@ -2,19 +2,7 @@ document.getElementById("btnAdd").addEventListener("click",addList);
 // html에서 id가 btnAdd인 요소를 찾고 클릭 시 동작할 addList 함수 연결
 
 
-// 로그인한 사용자의 팔로잉 리스트
-fetch('/follow',{
-    method: 'get'
-})
-.then(data => {
-    data.json().then((value) => {
-      console.log(value[0]);
-    });
-})
-.error()
-{
-    console.log("fail")
-}
+
 
 function addList() {
     var contents = document.querySelector(".text-basic");
@@ -48,7 +36,7 @@ function addList() {
     var td01=document.createElement("td"); // 첫 번째 .
 
 
-    ..............// <td> 생성 (체크박스를 담음)
+    // ..............// <td> 생성 (체크박스를 담음)
     td01.appendChild(input); // 첫 번째 <td> 안에 <input> 추가
 
     var td02 = document.createElement("td"); // 두 번째 <td> 생성 (텍스트를 담음)
