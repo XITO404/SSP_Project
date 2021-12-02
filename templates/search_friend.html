@@ -9,34 +9,117 @@
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../static/css/login.css" />
 	<style>
+		*{
+			background-color: white;
+		}
+		body{
+			background-color: white;
+		}
 		.search{
 			width: 400px;
-			hieght: 20px;
+			hieght: 30px;
 			border: 3px solid #000080;
+			background-color: white;
+			text-align: center;
+			padding-bottom: 10px;
 		}
 
 		.search input{
 			width: 340px;
-			hieght: 50px;
+			height: 20px;
 			border: none;
-			border-right: 1px solid #000080;
-			margin-bottom: 9px;
+			margin-bottom: 20px;
+			background-color: white;
+			position: center;
+			padding: 0px;
+			margin: 0px;
 		}
 
 		.search button{
 			background-color: transparent;
-			border: none;
 			font-size: 20px;
 			positon: center;
-			margin-left: 5px;
-			margin-top:4px;
+			border: none;
+			padding: 0px;
+			margin-top: 6px;
+			margin-bottom: 0px;
+			margin-left: 15px;
 		}
+
+		.search img {
+			width: 20px;
+			hieght: 20px;
+			margin-top: 6px;
+			margin-bottom: 0px;
+		}
+
+		.follow button{
+        	width : 64px;
+			height: 64px;
+		  	border-radius: 50%;
+		  	border-style: solid;
+			border-width: medium;
+		  	border-color: #F2F2F2;
+		  	background-color: #ffffff;
+		  	padding: 0;
+			padding-top: 1px;
+		  	margin: 10px;
+		}
+
+		.follow img{
+			width : 56px;
+		 	 height: 56px;
+		 	 border-radius: 50%;
+    	}
+
+		.user {
+			width: 400px;
+			height: 90px;
+			margin-bottom: 10px;
+			display: inline-flex;
+		}
+
+		.user .button {
+			width: 70px;
+			height: 40px;
+			border-radius: 10%;
+			background-color: #000080;
+			border: none;
+			color: white;
+			font-size: 15px;
+			margin-top: 23px;
+			margin-left: 250px;
+
+
+		}
+
+
 	</style>
 </head>
 <body>
     <div class="search">
 		<input type="text" placeholder="친구의 아이디를 입력하세요">
-		<button><img src="../static/img/search.JPG" onclick="location.href=''"></button>
+		<button><img src="../static/img/search.png" onclick="location.href=''"></button>
 	</div>
+	<div class="follow">
+		<div class="user" id="user1">
+			<button class="mandi" type="button" onclick="location.href='../calendar'"><img src="../static/img/profile_4.jpg"></button>
+			<input class='button' type="submit" value="팔로우">
+		</div>
+		<div class="user" id="user2">
+			<button class="mandi" type="button" onclick="location.href='../calendar'"><img src="../static/img/profile_4.jpg"></button>
+			<input class='button' type="submit" value="팔로우">
+		</div>
+		<div class="user" id="user3">
+			<button class="mandi" type="button" onclick="location.href='../calendar'"><img src="../static/img/profile_4.jpg"></button>
+			<input class='button' type="submit" value="팔로우">
+		</div>
+		<div class="user" id="user4">
+			<button class="mandi" type="button" onclick="location.href='../calendar'"><img src="../static/img/profile_4.jpg"></button>
+			<input class='button' type="submit" value="팔로우">
+		</div>
+
+	</div>
+
 </body>
 </html>
