@@ -190,10 +190,3 @@
             })
         </script>
     </body>
-</ht웹서버를 실행하고 크롬 브라우저로 http://localhost:3000/jquery.html에 접속합니다. Github ID를 입력하면 정보를 보여주는 웹 어플리케이션입니다.
-
-Blackboxing
-
-Basic 예제에서는 라이브러리를 사용하지 않았기 때문에 submit 이벤트를 검사할 때 정상적으로 소스에 중단점이 걸린 것을 확인했습니다. jQuery같은 라이브러리를 쓰면 상황이 좀 달라지는데 $(element).click()과 같은 코드는 이벤트 생성을 jQuery 라이브러리에 위임하고 실제로 jquery.js 파일에서 이벤트가 발생합니다.
-
-테스트를 위해 Event Listener중에 click이벤트에 중단점을 생성합니다. 디버깅 정보 창에서 Event Listener Breakpoints섹션을 열고 Mouse>click을 체크하면 됩니다. Fetch Avatar를 클릭해볼까요?ml>
