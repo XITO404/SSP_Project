@@ -93,4 +93,4 @@ function setThumbnail(event){
           reader.readAsDataURL(event.target.files[0]);
        }
 
-function showPopup() { window.open('../../templates/search_friend.html/', "a", "width=400, height=300, left=100, top=50"); }
+function showPopup() { window.open('../search_friend', "a", "width=400, height=300, left=100, top=50"); }
